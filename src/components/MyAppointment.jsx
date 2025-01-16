@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import mainUrl from "./MainUrl";
 import Cookie from "js-cookie";
 import useUserApis from "../pages/userApi";
 import doctorProfile from "../../images/doctor_profile.png";
@@ -47,7 +48,7 @@ function MyAppointment() {
     };
     try {
       const response = await fetch(
-        `http://localhost:4400/api/healthheaven/user-appointments/${appointmentsId}`,
+        `${mainUrl}/user-appointments/${appointmentsId}`,
         options
       );
       const data = await response.json();

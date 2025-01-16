@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useAdminApis from "./AdminApis";
 import doctorProfile from "../../../images/doctor_profile.png";
+import mainUrl from "../../components/MainUrl";
 function DoctorListItems({ item, eachId }) {
   //   const [availbleStatus, setAvailbiltyStatus] = useState("");
   const onClickToogle = async (e) => {
@@ -16,7 +17,7 @@ function DoctorListItems({ item, eachId }) {
       body: JSON.stringify({ available: !item.available }),
     };
     const response = await fetch(
-      `http://localhost:4400/api/healthheaven/admin/add-doctor/${item.id}`,
+      `${mainUrl}admin/add-doctor/${item.id}`,
       options
     );
     const data = await response.json();

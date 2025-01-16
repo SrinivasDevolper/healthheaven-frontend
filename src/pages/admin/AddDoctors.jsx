@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminNavbar from "./Sidebar";
 import useAdminApis from "./AdminApis";
+import mainUrl from "../../components/MainUrl";
 function AddDoctors() {
   const [docImg, setDocImg] = useState(false);
   const [name, setName] = useState("");
@@ -39,10 +40,7 @@ function AddDoctors() {
       },
       body: JSON.stringify(newDoctor),
     };
-    const response = await fetch(
-      `http://localhost:4400/api/healthheaven/admin/${api}`,
-      options
-    );
+    const response = await fetch(`${mainUrl}admin/${api}`, options);
     const data = await response.json();
     console.log(data, "data", response);
     setName("");

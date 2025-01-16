@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import mainUrl from "../components/MainUrl";
 // import { AppContext } from "../context/AppContext";
 import verifiedIcon from "../../images/light-green-verified-icon.png";
 import RelatedDoctors from "./RelatedDoctors";
@@ -95,10 +96,7 @@ function Appointment() {
         },
         body: JSON.stringify(appObj),
       };
-      const response = await fetch(
-        `http://localhost:4400/api/healthheaven/${api}`,
-        options
-      );
+      const response = await fetch(`${mainUrl}${api}`, options);
       const data = await response.json();
       alert("Update Successfully");
       navigates("/my-appointments");

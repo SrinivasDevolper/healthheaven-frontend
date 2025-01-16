@@ -1,4 +1,5 @@
 import React from "react";
+import mainUrl from "../../components/MainUrl";
 import AdminNavbar from "./Sidebar";
 import search from "../../../images/search.gif";
 import peoples from "../../../images/peoples.png";
@@ -11,6 +12,7 @@ function AdminDashboard() {
   const { apiData } = useAdminApis("all-appointment");
   const adminPatient = useAdminApis("patient-count");
   const adminDoctors = useAdminApis("doctors-count");
+  console.log(adminDoctors, "adminDoctors");
   if (adminAppointments.loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -38,7 +40,7 @@ function AdminDashboard() {
     // console.log(eachId, "eachId");
     try {
       const response = await axios.delete(
-        `http://localhost:4400/api/healthheaven/admin/admin-appointment/${id}`,
+        `${mainUrl}admin/admin-appointment/${id}`,
         {
           headers: {
             "Content-Type": "application/json",

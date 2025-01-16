@@ -1,6 +1,6 @@
-import React from "react";
-
+import { useNavigate } from "react-router-dom";
 function Contact() {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="text-center text-2xl pt-10 text-gray-500">
@@ -22,16 +22,19 @@ function Contact() {
           <p className="text-gray-500">
             Tel: (000) 000-01010
             <br />
-            Email: kingsrinivassri123@gmail.com
+            Email: healthheaven123@gmail.com
           </p>
           <p className="font-semibold text-lg text-gray-600">
             CAREERS AT HEALTH HEAVEN
           </p>
-          <p className="text-gray-600">
-            Learn more about our teams and job openings.
-          </p>
-          <button className="border border-black px-8 py-4 text-sm hover:bg-primary hover:text-white transition-all duration-500">
-            Explore Jobs
+          <p className="text-gray-600">Learn more about our teams.</p>
+          <button
+            onClick={() => {
+              navigate("/doctors");
+            }}
+            className="border border-black px-8 py-4 text-sm hover:bg-primary hover:text-white transition-all duration-500"
+          >
+            Find Doctors
           </button>
         </div>
       </div>

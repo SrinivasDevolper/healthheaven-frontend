@@ -41,6 +41,7 @@ if (Cookies.get("role")) {
   const { role } = JSON.parse(Cookie.get("role"));
   getRole = role;
 }
+
 function App() {
   return (
     <div className="md:px-20 px-5">

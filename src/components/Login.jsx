@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import mainUrl from "./MainUrl";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import cookies from "js-cookie";
@@ -26,10 +27,7 @@ function Login() {
       };
       // console.log(state, "State Changed");
       try {
-        const response = await fetch(
-          "http://localhost:4400/api/healthheaven/register",
-          options
-        );
+        const response = await fetch(`${mainUrl}register`, options);
         const data = await response.json();
         toast(data.message);
         navigate("/login");
@@ -55,10 +53,7 @@ function Login() {
         body: JSON.stringify(userSignInDetails),
       };
       try {
-        const response = await fetch(
-          "http://localhost:4400/api/healthheaven/login",
-          options
-        );
+        const response = await fetch(`${mainUrl}login`, options);
         const data = await response.json();
         const { jwtToken, payload } = data;
         toast(data.message, {
@@ -76,7 +71,9 @@ function Login() {
           cookies.set("role", JSON.stringify(payload), { expires: 10 });
           navigate("/");
         }
-        if (jwtToken !== undefined && payload.role === "admin") {
+        console.log("role", payload.role);
+        if (jwtToken && payload.role === "admin") {
+          console.log("working");
           cookies.set("token", jwtToken, { expires: 10 });
           cookies.set("role", JSON.stringify(payload), { expires: 10 });
           navigate("/admin-dashboard");

@@ -136,7 +136,7 @@ function DoctorsSpeciality() {
           </p>
         </div>
         <div className="w-full grid grid-cols-auto gap-4 gap-y-6 px-3 sm:px-0">
-          {filterDoc.slice(0, 10).map((eachDoctor, index) => (
+          {filterDoc.map((eachDoctor, index) => (
             <div
               onClick={() => {
                 navigate(`/appointment/doctor${eachDoctor.id}`);

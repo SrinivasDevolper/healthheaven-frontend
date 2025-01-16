@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import mainUrl from "../../components/MainUrl";
 import Cookie from "js-cookie";
 const useAdminApis = (api) => {
   console.log(api, "api");
@@ -29,10 +30,7 @@ const useAdminApis = (api) => {
       },
     };
     try {
-      const response = await fetch(
-        `http://localhost:4400/api/healthheaven/admin/${api}`,
-        options
-      );
+      const response = await fetch(`${mainUrl}admin/${api}`, options);
       const data = await response.json();
       console.log(response, data, "response");
       setAdminData({
