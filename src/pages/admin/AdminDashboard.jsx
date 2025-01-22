@@ -4,7 +4,7 @@ import mainUrl from "../../components/MainUrl";
 import AdminNavbar from "./Sidebar";
 import search from "../../images/search.gif";
 import peoples from "../../images/peoples.png";
-import playList from "../../images/playList.png";
+import playList from "../../images/playlist.png";
 import useAdminApis from "./AdminApis";
 import { DNA } from "react-loader-spinner";
 import axios from "axios";
