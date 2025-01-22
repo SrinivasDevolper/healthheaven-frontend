@@ -1,20 +1,20 @@
-import category1 from "../../images/Catogoryimg1.png";
-import category2 from "../../images/Catogoryimg2.png";
-import category3 from "../../images/Catogoryimg3.png";
-import category4 from "../../images/Catogoryimg4.png";
-import category5 from "../../images/Catogoryimg5.png";
-import category6 from "../../images/Catogoryimg6.png";
-import doctor1 from "../../images/doctor-img1.png";
-import doctor2 from "../../images/doctor-img2.png";
-import doctor3 from "../../images/doctor-img3.png";
-import doctor4 from "../../images/doctor-img4.png";
-import doctor5 from "../../images/doctor-img5.png";
-import doctor7 from "../../images/doctor-img7.png";
-import doctor8 from "../../images/doctor-img8.png";
-import doctor9 from "../../images/doctor-img9.png";
-import doctor10 from "../../images/doctor-img10.png";
-import doctor11 from "../../images/doctor-img11.png";
-import doctor12 from "../../images/doctor-img12.png";
+import category1 from "../images/Catogoryimg1.png";
+import category2 from "../images/Catogoryimg2.png";
+import category3 from "../images/Catogoryimg3.png";
+import category4 from "../images/Catogoryimg4.png";
+import category5 from "../images/Catogoryimg5.png";
+import category6 from "../images/Catogoryimg6.png";
+import doctor1 from "../images/doctor-img1.png";
+import doctor2 from "../images/doctor-img2.png";
+import doctor3 from "../images/doctor-img3.png";
+import doctor4 from "../images/doctor-img4.png";
+import doctor5 from "../images/doctor-img5.png";
+import doctor7 from "../images/doctor-img7.png";
+import doctor8 from "../images/doctor-img8.png";
+import doctor9 from "../images/doctor-img9.png";
+import doctor10 from "../images/doctor-img10.png";
+import doctor11 from "../images/doctor-img11.png";
+import doctor12 from "../images/doctor-img12.png";
 
 export const SpecialistData = [
   {

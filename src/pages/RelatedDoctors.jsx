@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
-import doctorProfile from "../../images/doctor_profile.png";
+import doctorProfile from "../images/doctor_profile.png";
 import useUserApis from "./userApi";
 function RelatedDoctors({ doctorId, specialty }) {
   // console.log(doctorId, specialty, "RelatedDoctor");

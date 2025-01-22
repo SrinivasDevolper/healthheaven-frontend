@@ -4,7 +4,8 @@ import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 import useUserApis from "./userApi";
 import { DNA } from "react-loader-spinner";
-import doctorProfile from "../../images/doctor_profile.png";
+// import doctorProfile from "../../images/doctor_profile.png";
+import doctorProfile from "../images/doctor_profile.png";
 function TopDoctors() {
   const navigate = useNavigate();
   const { doctorsList } = useContext(AppContext);

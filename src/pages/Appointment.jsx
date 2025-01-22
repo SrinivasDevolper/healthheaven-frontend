@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import mainUrl from "../components/MainUrl";
 // import { AppContext } from "../context/AppContext";
-import verifiedIcon from "../../images/light-green-verified-icon.png";
+import verifiedIcon from "../images/light-green-verified-icon.png";
 import RelatedDoctors from "./RelatedDoctors";
 import useUserApis from "./userApi";
 import { DNA } from "react-loader-spinner";
-import doctorProfile from "../../images/doctor_profile.png";
+import doctorProfile from "../images/doctor_profile.png";
 // import { useAuthContext } from "../context/AuthContex";
 import Cookies from "js-cookie";
 function Appointment() {
@@ -15,7 +15,7 @@ function Appointment() {
   if (Cookies.get("role")) {
     roleJson = JSON.parse(Cookies.get("role"));
   }
-
+  console.log(Cookies.get("token"), "Cookies.get(token)");
   const userAPiResult = useUserApis("all-doctors");
   const { apiData } = userAPiResult;
   const { doctorId } = useParams();
@@ -83,7 +83,7 @@ function Appointment() {
   }, [apiData]);
 
   useEffect(() => {}, [docsSlot]);
-
+  // console.log(Cookies.get("token"));
   const apiFetch = async (api, appObj) => {
     // console.log(appObj, "appObj");
     try {

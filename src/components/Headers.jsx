@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import websiteLogo from "../../images/Doctor_Logo.png";
+import websiteLogo from "../images/Doctor_Logo.png";
 import { Link, NavLink, useNavigate } from "react-router";
 import { IoMdArrowDropdown } from "react-icons/io";
-import userProfile from "../../images/userDefaultImage.png";
+import userProfile from "../images/userDefaultImage.png";
 import Cookies from "js-cookie";
 import "../app.css";
 const Menu = [

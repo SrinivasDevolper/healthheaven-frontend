@@ -54,14 +54,10 @@ const useUserApis = (api) => {
       });
     }
   };
-  useEffect(
-    () => {
-      fetchAdminData();
-      //   console.log(adminData, "adminData");
-    },
-    adminData,
-    api
-  );
+  useEffect(() => {
+    fetchAdminData();
+    //   console.log(adminData, "adminData");
+  }, [api]);
   return adminData;
 };
 

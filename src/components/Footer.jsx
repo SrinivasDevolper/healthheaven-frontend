@@ -1,5 +1,5 @@
 import React from "react";
-import DoctorLogo from "../../images/Doctor_Logo.png";
+import DoctorLogo from "../images/Doctor_Logo.png";
 
 function FooterPage() {
   return (

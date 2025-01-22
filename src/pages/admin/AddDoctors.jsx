@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminNavbar from "./Sidebar";
+import Cookie from "js-cookie";
+import { toast, ToastContainer } from "react-toastify";
 import useAdminApis from "./AdminApis";
 import mainUrl from "../../components/MainUrl";
 function AddDoctors() {
@@ -35,13 +37,13 @@ function AddDoctors() {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczNTU3Mzc0OX0.2dtJxlPQ1AF_eEdN_ue_PB5z3ro12G6SuMSDCwCyCYM",
+        Authorization: `Bearer ${Cookie.get("token")}`,
       },
       body: JSON.stringify(newDoctor),
     };
     const response = await fetch(`${mainUrl}admin/${api}`, options);
     const data = await response.json();
+    toast(data.message);
     console.log(data, "data", response);
     setName("");
     setEmail("");
@@ -236,6 +238,7 @@ function AddDoctors() {
           </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }

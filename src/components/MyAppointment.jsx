@@ -3,16 +3,13 @@ import { AppContext } from "../context/AppContext";
 import mainUrl from "./MainUrl";
 import Cookie from "js-cookie";
 import useUserApis from "../pages/userApi";
-import doctorProfile from "../../images/doctor_profile.png";
+import doctorProfile from "../images/doctor_profile.png";
 import { ToastContainer, toast } from "react-toastify";
 import { DNA } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 
 function MyAppointment() {
-  // const { doctorsList } = useContext(AppContext);
   const { email } = JSON.parse(Cookie.get("role"));
-  // const JwtToken = Cookie.get("token");
-  // console.log(token, "token");
   const userAPiResult = useUserApis(`user-appointments/${email}`);
   const { apiData } = userAPiResult;
   const navigate = useNavigate();
@@ -48,10 +45,11 @@ function MyAppointment() {
     };
     try {
       const response = await fetch(
-        `${mainUrl}/user-appointments/${appointmentsId}`,
+        `${mainUrl}user-appointments/${appointmentsId}`,
         options
       );
       const data = await response.json();
+      console.log(data, "data");
       toast(data.message);
       window.location.reload();
     } catch (e) {

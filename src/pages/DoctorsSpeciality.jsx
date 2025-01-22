@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import useUserApis from "./userApi";
 import { DNA } from "react-loader-spinner";
-import doctorProfile from "../../images/doctor_profile.png";
+import doctorProfile from "../images/doctor_profile.png";
 function DoctorsSpeciality() {
   const { speciality } = useParams();
   // console.log(speciality, "specialty");

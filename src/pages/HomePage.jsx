@@ -1,5 +1,6 @@
 import { FaArrowRight } from "react-icons/fa6";
-import TeamHomeImg from "../../images/Doctor_Team_Home_img.png";
+import TeamHomeImg from "../images/Doctor_Team_Home_img.png";
+
 import { Navigate } from "react-router-dom";
 import Cookie from "js-cookie";
 function HomePage() {

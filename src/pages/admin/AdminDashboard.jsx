@@ -1,9 +1,10 @@
 import React from "react";
+import Cookies from "js-cookie";
 import mainUrl from "../../components/MainUrl";
 import AdminNavbar from "./Sidebar";
-import search from "../../../images/search.gif";
-import peoples from "../../../images/peoples.png";
-import playList from "../../../images/playList.png";
+import search from "../../images/search.gif";
+import peoples from "../../images/peoples.png";
+import playList from "../../images/playList.png";
 import useAdminApis from "./AdminApis";
 import { DNA } from "react-loader-spinner";
 import axios from "axios";
@@ -44,7 +45,7 @@ function AdminDashboard() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczNjAwNjI1MH0.uv91ghCwcpufTFe2pxH5wNUkpyXrAeZi97W0kGIr40g`,
+            Authorization: `Bearer ${Cookies.get("token")}`,
           },
           // params: { id: eachId },
         }

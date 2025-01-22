@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useUserApis from "../pages/userApi";
-import userProfileImg from "../../images/userDefaultImage.png";
+import userProfileImg from "../images/userDefaultImage.png";
 import { DNA } from "react-loader-spinner";
 import Cookies from "js-cookie";
 const MyProfile = () => {

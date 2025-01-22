@@ -32,7 +32,6 @@ const useAdminApis = (api) => {
     try {
       const response = await fetch(`${mainUrl}admin/${api}`, options);
       const data = await response.json();
-      console.log(response, data, "response");
       setAdminData({
         ...adminData,
         apiData: data,
@@ -55,14 +54,10 @@ const useAdminApis = (api) => {
       });
     }
   };
-  useEffect(
-    () => {
-      fetchAdminData();
-      console.log(adminData, "adminData");
-    },
-    adminData,
-    api
-  );
+  useEffect(() => {
+    fetchAdminData();
+    console.log(adminData, "adminData");
+  }, [api]);
   return adminData;
 };
 

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import useAdminApis from "./AdminApis";
-import doctorProfile from "../../../images/doctor_profile.png";
+import doctorProfile from "../../images/doctor_profile.png";
 import mainUrl from "../../components/MainUrl";
+import Cookies from "js-cookie";
 function DoctorListItems({ item, eachId }) {
   //   const [availbleStatus, setAvailbiltyStatus] = useState("");
   const onClickToogle = async (e) => {
@@ -11,8 +12,7 @@ function DoctorListItems({ item, eachId }) {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczNTU3Mzc0OX0.2dtJxlPQ1AF_eEdN_ue_PB5z3ro12G6SuMSDCwCyCYM",
+        Authorization: `Bearer ${Cookies.get("token")}`,
       },
       body: JSON.stringify({ available: !item.available }),
     };
@@ -21,6 +21,7 @@ function DoctorListItems({ item, eachId }) {
       options
     );
     const data = await response.json();
+    console.log(data, "dataDoctorListItems");
     window.location.reload();
   };
   return (
