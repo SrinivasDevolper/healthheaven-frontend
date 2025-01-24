@@ -10,8 +10,8 @@ const MyProfile = () => {
     emails = email;
   }
   console.log(emails);
-  const userAPiResult = useUserApis(`user-profile/${emails}`);
-  const { apiData } = userAPiResult;
+  const { adminData } = useUserApis(`user-profile/${emails}`);
+  const { apiData } = adminData;
   const [userData, setUserData] = useState({
     name: "",
     phone: "",
@@ -23,7 +23,7 @@ const MyProfile = () => {
     dob: "",
   });
   const [isEdit, setIsEdit] = useState(false);
-  if (userAPiResult.loading) {
+  if (adminData.loading) {
     return (
       <div className="flex items-center justify-center h-screen">
         <DNA
@@ -37,10 +37,10 @@ const MyProfile = () => {
       </div>
     );
   }
-  if (userAPiResult.error.status) {
+  if (adminData.error.status) {
     return (
       <div>
-        <h1 className="text-red-500 font-bold">*{userAPiResult.error.msg}</h1>
+        <h1 className="text-red-500 font-bold">*{adminData.error.msg}</h1>
       </div>
     );
   }

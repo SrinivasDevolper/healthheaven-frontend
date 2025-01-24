@@ -12,8 +12,8 @@ function DoctorsSpeciality() {
   const navigate = useNavigate();
   const { doctorsList } = useContext(AppContext);
   const [showFilter, setShowFilter] = useState(false);
-  const userAPiResult = useUserApis("all-doctors");
-  const { apiData } = userAPiResult;
+  const { adminData } = useUserApis("all-doctors");
+  const { apiData } = adminData;
   const applyFilter = () => {
     if (speciality) {
       setFilterDoc(apiData.filter((doc) => doc.speciality === speciality));
@@ -24,7 +24,7 @@ function DoctorsSpeciality() {
   useEffect(() => {
     applyFilter();
   }, [apiData, speciality]);
-  if (userAPiResult.loading) {
+  if (adminData.loading) {
     return (
       <div className="flex items-center justify-center h-screen">
         <DNA
@@ -38,10 +38,10 @@ function DoctorsSpeciality() {
       </div>
     );
   }
-  if (userAPiResult.error.status) {
+  if (adminData.error.status) {
     return (
       <div>
-        <h1 className="text-red-500 font-bold">*{userAPiResult.error.msg}</h1>
+        <h1 className="text-red-500 font-bold">*{adminData.error.msg}</h1>
       </div>
     );
   }

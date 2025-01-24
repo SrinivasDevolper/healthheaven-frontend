@@ -86,9 +86,7 @@ function AddDoctors() {
                 id="doc-image"
                 hidden
               /> */}
-              <p>
-                Upload doctor <br /> picture
-              </p>
+              <p>picture</p>
             </div>
             <div className="flex flex-col lg:flex-row items-start gap-10 text-gray-600">
               <div className="w-full lg:flex-1 flex flex-col gap-4">

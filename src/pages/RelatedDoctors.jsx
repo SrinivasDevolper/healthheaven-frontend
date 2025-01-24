@@ -6,17 +6,17 @@ import useUserApis from "./userApi";
 function RelatedDoctors({ doctorId, specialty }) {
   // console.log(doctorId, specialty, "RelatedDoctor");
   // const { doctorsList } = useContext(AppContext);
-  const { apiData } = useUserApis("all-doctors");
+  const { adminData } = useUserApis("all-doctors");
   const [relDoc, setRelDoc] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    if (apiData.length > 0 && specialty) {
-      const doctorsData = apiData.filter(
+    if (adminData.apiData.length > 0 && specialty) {
+      const doctorsData = adminData.apiData.filter(
         (doc) => doc.speciality == specialty && doc.id
       );
       setRelDoc(doctorsData);
     }
-  }, [apiData, specialty, doctorId]);
+  }, [adminData.apiData, specialty, doctorId]);
   return (
     <div className="flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10">
       <h1 className="text-3xl font-medium">

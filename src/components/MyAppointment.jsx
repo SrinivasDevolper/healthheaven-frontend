@@ -10,10 +10,10 @@ import { useNavigate } from "react-router-dom";
 
 function MyAppointment() {
   const { email } = JSON.parse(Cookie.get("role"));
-  const userAPiResult = useUserApis(`user-appointments/${email}`);
-  const { apiData } = userAPiResult;
+  const { adminData, refetch } = useUserApis(`user-appointments/${email}`);
+  const { apiData } = adminData;
   const navigate = useNavigate();
-  if (userAPiResult.loading) {
+  if (adminData.loading) {
     return (
       <div className="flex items-center justify-center h-screen">
         <DNA
@@ -27,10 +27,10 @@ function MyAppointment() {
       </div>
     );
   }
-  if (userAPiResult.error.status) {
+  if (adminData.error.status) {
     return (
       <div>
-        <h1 className="text-red-500 font-bold">*{userAPiResult.error.msg}</h1>
+        <h1 className="text-red-500 font-bold">*{adminData.error.msg}</h1>
       </div>
     );
   }
@@ -51,7 +51,7 @@ function MyAppointment() {
       const data = await response.json();
       console.log(data, "data");
       toast(data.message);
-      window.location.reload();
+      refetch();
     } catch (e) {
       toast(e.message);
     }

@@ -1,23 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import mainUrl from "../components/MainUrl";
-// import { AppContext } from "../context/AppContext";
 import verifiedIcon from "../images/light-green-verified-icon.png";
 import RelatedDoctors from "./RelatedDoctors";
 import useUserApis from "./userApi";
 import { DNA } from "react-loader-spinner";
 import doctorProfile from "../images/doctor_profile.png";
-// import { useAuthContext } from "../context/AuthContex";
 import Cookies from "js-cookie";
 function Appointment() {
-  // const { getToken, getRole } = useAuthContext();
   let roleJson;
   if (Cookies.get("role")) {
     roleJson = JSON.parse(Cookies.get("role"));
   }
   console.log(Cookies.get("token"), "Cookies.get(token)");
-  const userAPiResult = useUserApis("all-doctors");
-  const { apiData } = userAPiResult;
+  const { adminData, refetch } = useUserApis("all-doctors");
+  const { apiData } = adminData;
   const { doctorId } = useParams();
 
   // const { doctorsList } = useContext(AppContext);
@@ -127,7 +124,7 @@ function Appointment() {
     }
   };
 
-  if (userAPiResult.loading) {
+  if (adminData.loading) {
     return (
       <div className="flex items-center justify-center h-screen">
         <DNA
@@ -141,10 +138,10 @@ function Appointment() {
       </div>
     );
   }
-  if (userAPiResult.error.status) {
+  if (adminData.error.status) {
     return (
       <div>
-        <h1 className="text-red-500 font-bold">*{userAPiResult.error.msg}</h1>
+        <h1 className="text-red-500 font-bold">*{adminData.error.msg}</h1>
       </div>
     );
   }

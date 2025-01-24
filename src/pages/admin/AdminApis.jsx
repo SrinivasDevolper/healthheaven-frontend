@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import mainUrl from "../../components/MainUrl";
 import Cookie from "js-cookie";
 const useAdminApis = (api) => {
-  console.log(api, "api");
   const [adminData, setAdminData] = useState({
     apiData: [],
     loading: false,

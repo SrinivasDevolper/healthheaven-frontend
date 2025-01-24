@@ -9,9 +9,9 @@ import doctorProfile from "../images/doctor_profile.png";
 function TopDoctors() {
   const navigate = useNavigate();
   const { doctorsList } = useContext(AppContext);
-  const userAPiResult = useUserApis("all-doctors");
-  const { apiData } = userAPiResult;
-  if (userAPiResult.loading) {
+  const { adminData } = useUserApis("all-doctors");
+  const { apiData } = adminData;
+  if (adminData.loading) {
     return (
       <div className="flex items-center justify-center h-screen">
         <DNA
@@ -25,10 +25,10 @@ function TopDoctors() {
       </div>
     );
   }
-  if (userAPiResult.error.status) {
+  if (adminData.error.status) {
     return (
       <div>
-        <h1 className="text-red-500 font-bold">*{userAPiResult.error.msg}</h1>
+        <h1 className="text-red-500 font-bold">*{adminData.error.msg}</h1>
       </div>
     );
   }

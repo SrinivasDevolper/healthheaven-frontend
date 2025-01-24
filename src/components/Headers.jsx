@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import websiteLogo from "../images/Doctor_Logo.png";
-import { Link, NavLink, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate, Navigate } from "react-router";
 import { IoMdArrowDropdown } from "react-icons/io";
 import userProfile from "../images/userDefaultImage.png";
 import Cookies from "js-cookie";
@@ -30,15 +30,12 @@ const Menu = [
 
 function Headers() {
   const navigate = useNavigate();
-  // const [token, setToken] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   let roles;
   if (Cookies.get("role")) {
     let { role } = JSON.parse(Cookies.get("role"));
     roles = role;
-    // console.log(roles);
   }
-  // console.log("roles", roles);
   return (
     <div className="flex items-center justify-between p-4 shadow-sm">
       <div className="flex items-center gap-10">
@@ -51,6 +48,13 @@ function Headers() {
             >
               Health Heaven
             </h1>
+            {roles === "admin" && (
+              <Link to="/admin-dashboard">
+                <p className="hover:text-black cursor-pointer ml-4 border pr-2 pl-2 rounded-full">
+                  Admin
+                </p>
+              </Link>
+            )}
           </div>
         </Link>
         {roles === "user" && (

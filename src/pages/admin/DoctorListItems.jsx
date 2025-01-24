@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import useAdminApis from "./AdminApis";
 import doctorProfile from "../../images/doctor_profile.png";
 import mainUrl from "../../components/MainUrl";
 import Cookies from "js-cookie";
+
 function DoctorListItems({ item, eachId }) {
-  //   const [availbleStatus, setAvailbiltyStatus] = useState("");
-  const onClickToogle = async (e) => {
-    console.log(e.target.checked);
+  const [available, setAvailable] = useState(item.available);
+
+  const onClickToggle = async (e) => {
+    const newStatus = !available; // Calculate the new availability status
+    setAvailable(newStatus); // Update the local state immediately for frontend responsiveness
+
     const options = {
       method: "PUT",
       headers: {
@@ -14,16 +17,28 @@ function DoctorListItems({ item, eachId }) {
         Accept: "application/json",
         Authorization: `Bearer ${Cookies.get("token")}`,
       },
-      body: JSON.stringify({ available: !item.available }),
+      body: JSON.stringify({ available: newStatus }),
     };
-    const response = await fetch(
-      `${mainUrl}admin/add-doctor/${item.id}`,
-      options
-    );
-    const data = await response.json();
-    console.log(data, "dataDoctorListItems");
-    window.location.reload();
+
+    try {
+      const response = await fetch(
+        `${mainUrl}admin/add-doctor/${item.id}`,
+        options
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update availability status");
+      }
+
+      const data = await response.json();
+      console.log("Backend update successful:", data);
+    } catch (error) {
+      console.error(error);
+      // Revert the state if the API request fails
+      setAvailable(!newStatus);
+    }
   };
+
   return (
     <div
       className="border border-indigo-200 rounded-xl max-w-56 overflow-hidden cursor-pointer group"
@@ -32,7 +47,7 @@ function DoctorListItems({ item, eachId }) {
       <img
         className="h-60 w-60 object-fit bg-[#f2ffff] group-hover:bg-primary transition-all duration-500"
         src={item.image || doctorProfile}
-        alt={item.names}
+        alt={item.name}
       />
       <div className="p-4">
         <p className="text-neutral-800 text-lg font-medium">{item.name}</p>
@@ -42,10 +57,10 @@ function DoctorListItems({ item, eachId }) {
             name="availability"
             id="availability"
             type="checkbox"
-            checked={item.available}
-            onChange={onClickToogle}
+            checked={available}
+            onChange={onClickToggle}
           />
-          <p htmlFor="availability">Available</p>
+          <label htmlFor="availability">Available</label>
         </div>
       </div>
     </div>
